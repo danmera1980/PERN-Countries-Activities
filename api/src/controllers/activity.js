@@ -1,9 +1,8 @@
 const axios = require("axios");
-const {Activity} = require('../db');
-const { all } = require("../routes/activity");
+const {Country, Activity} = require('../db');
 
 const createActivity = async (req, res) => {
-    const {name, difficulty, duration, season} = req.body;
+    const {name, difficulty, duration, season, countries} = req.body;
     try {
         const activity = await Activity.findOrCreate({
            where: {
@@ -11,8 +10,18 @@ const createActivity = async (req, res) => {
                difficulty,
                duration,
                season
-           } 
+           }
+        });
+
+        const act = await Activity.findOne({
+            where:{
+                name
+            }
         })
+
+        countries.forEach(c => {
+            act.addCountry(c)
+        });
 
         res.status(200).send(activity)
     } catch (e) {
@@ -30,7 +39,17 @@ const getAllActivities = async (req, res) => {
     }
 };
 
+const deleteCountry_Activity = async (req, res) => {
+    try {
+        
+    } catch (e) {
+        
+    }
+};
+
+
 module.exports = {
     createActivity,
-    getAllActivities
+    getAllActivities,
+    deleteCountry_Activity
 }

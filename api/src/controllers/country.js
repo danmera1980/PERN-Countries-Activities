@@ -60,18 +60,18 @@ const getCountryByID = async (req, res) => {
             res.status(404).send('No se encuentra país con ese código.')
         }
     } catch (e) {
-        console.log(e)
+        next(e)
     }
 };
 
-const addActivityToCountry = async (req, res) => {
-    try {
-        const {coutnryId, activityId} = req.body;
-        const countryActivity = await 
-    } catch (e) {
+// const addActivityToCountry = async (req, res) => {
+//     try {
+//         const {coutnryId, activityId} = req.body;
+//         const countryActivity = await 
+//     } catch (e) {
         
-    }
-}
+//     }
+// }
 
 module.exports = {
     getAllCountries,
