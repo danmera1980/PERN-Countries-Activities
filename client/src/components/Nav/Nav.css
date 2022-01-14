@@ -1,0 +1,26 @@
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgba(0, 0, 0, .5);
+    color: white;
+    font-size: 1.2em;
+}
+
+header ul {
+    position: relative;
+    list-style-type: none;
+    margin: 0;
+    overflow: hidden;
+}
+
+header li {
+    float: left;
+    text-align: center;
+    margin: 15px;
+    color: white;
+}
+
+header li:hover{
+    color: yellow;
+}

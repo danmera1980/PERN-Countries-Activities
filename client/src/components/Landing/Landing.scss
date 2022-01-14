@@ -1,0 +1,124 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: monospace;
+}
+
+body {
+    background: url('space6.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100wh;
+    /* transform-style: preserve-3d; */
+}
+
+.earth{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 260px;
+    height: 260px;
+    background: url('world.jpg');
+    background-size: cover;
+    background-repeat: repeat-x;
+    border-radius: 50%;
+    box-shadow: inset 0 0 20px rgba(0,0,0,1), 0 0 50px #4069ff;
+    animation: animateEarth 20s linear infinite;
+}
+
+@keyframes animateEarth{
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 650px 0;
+    }
+}
+
+/* .earth h1 {
+    color: white;
+    font-size: 3em;
+    text-shadow: rgba(0,0,0,1);
+} */
+.scene {
+    position: relative;
+    transform-style: preserve-3d;
+    perspective: 500px;
+}
+
+.banner{
+    display: flex;
+    color: white;
+    // perspective: 500px;
+    perspective-origin: 50% calc(50% - 50px);
+    transform-style: preserve-3d;
+    animation: rotate 24s infinite linear;
+}
+
+@keyframes rotate {
+    to { transform: rotateY(-360deg);}
+}
+
+$width: 90px;
+
+.panel{
+    position: absolute;
+    // position: relative;
+    transform: translate(-50%, -50%) rotateY(var(--angle)) translateZ(138px); 
+    width: $width;
+    height: 50px;
+    // border: 1px solid white;
+    // background-color: #fff4;
+    overflow: hidden;
+    backface-visibility: hidden;
+    // animation: rotate 6s var(--delay) infinite ease-in-out alternate
+}
+
+// @keyframes rotate {
+//     0%,10% { transform: rotateX(0deg);}
+//     90%, 100% { transform: rotateX(360deg);}
+// }
+
+.panel::before {
+    position: absolute;
+    left: var(--left);
+    content: 'World Activities - Click to Enter';
+    font-size: 40px;
+    width: max-content;
+    // color: hsl(var(--hue), 75%, 75%);
+}
+
+// .panel:hover {
+//     transform: scale(1.5);
+// }
+
+@for $i from 0 to 10
+ {
+    .panel:nth-child(#{$i + 1}) {
+        --left: #{$width * $i * -1};
+        // --hue: #{360/10 * $i};
+        // --delay: #{$i* 0.1s};
+        --angle: #{360deg/ 10 * $i};
+    }
+}
+
+.screen {
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    // background-color: red;
+    transform: translate(-50%, -50%);
+}
