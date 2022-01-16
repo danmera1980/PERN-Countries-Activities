@@ -1,18 +1,17 @@
 import axios from 'axios';
 import { ALL_COUNTRIES, COUNTRY_BY_ID } from './actionNames';
 
-export let getAllCountries = () => {
+export const getAllCountries = () => {
     return async (dispatch) => {
-        let results = await axios.get("http://localhost:3001/countries");
-        console.log(results);
-        dispatch({
+        var results = await axios.get('http://localhost:3001/countries');
+        // console.log(results.data);
+        return dispatch({
             type: ALL_COUNTRIES,
             payload: results.data
         })
     }
 }
-
-export let countryById = (id) => {
+export const countryById = (id) => {
     return async (dispatch) => {
         let results = await axios.get("http://localhost:3001/coutries/" + id);
         dispatch({

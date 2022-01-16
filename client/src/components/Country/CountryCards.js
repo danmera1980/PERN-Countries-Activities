@@ -1,17 +1,18 @@
 import React from "react";
 import CountryCard from "./CountryCard";
+import "./country.scss";
 
-function CountryCards(countries){
-    // console.log(countries);
+function CountryCards({countries}){
+
     return(
-        <div>
-            {countries.map(c => (
-                <div>
+        <div className="cards">
+            {countries && countries?.map(c => (
+                <div key={c.id}>
                     <CountryCard 
                         key={c.id}
                         name={c.name}
-                        imgFlag={c.imgFlag}
-                        region={c.region}
+                        imageUrl={c.imageUrl}
+                        continent={c.continent}
                     />
                 </div>
             ))}

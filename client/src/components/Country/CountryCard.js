@@ -1,11 +1,12 @@
 import React from "react";
+import "./country.scss"
 
-function CountryCard(props){
+function CountryCard({imageUrl, name, continent}){
     return(
-        <div>
-            <img src={props.imgFlag} alt="flag"/>
-            <h3>{props.name}</h3>
-            <h4>{props.region}</h4>
+        <div className="card">
+            <img src={imageUrl} alt="flag"/>
+            <h3>{name}</h3>
+            <h4>{continent}</h4>
         </div>
     )
 };

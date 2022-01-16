@@ -1,4 +1,3 @@
-
 import { ALL_COUNTRIES, COUNTRY_BY_ID } from '../actions/actionNames';
 
 const initialState = {
@@ -6,7 +5,7 @@ const initialState = {
     countryDetails: []
 }
 
-const countryReducer = (state= initialState, action) => {
+const countryReducer = (state = initialState, action) => {
     switch(action.type){
         case ALL_COUNTRIES:
             return {

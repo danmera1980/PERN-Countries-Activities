@@ -1,0 +1,92 @@
+$main-color: #fff8;
+$secondary-color: #1d1f20;
+
+@mixin display-child($n) {
+    @for $i from 2 through $n {
+      &:nth-child(#{$i}) {
+        a {
+          display: inline-block;
+        }
+      }
+    }
+ }
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+.container {
+    background: lighten($main-color, 5%);
+    padding: 1rem;
+    margin: 3rem auto;
+    border-radius: 0.2rem;
+      box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.3);
+    counter-reset: pagination;
+    text-align: center;
+    &:after {
+      clear: both;
+      content: "";
+      display: table;
+    }
+    ul {
+      width: 100%;
+    }
+  }
+
+  ul, li {
+    list-style: none;
+    display: inline;
+    padding-left: 0px;
+  }
+  
+  li {
+    counter-increment: pagination;
+    &:hover {
+      a {
+        color: lighten($main-color, 5%);
+        background-color: $secondary-color;
+        border: solid 1px $secondary-color;
+      }
+    }
+    &.active {
+      a {
+        color: lighten($main-color, 5%);
+        background-color: $secondary-color;
+        border: solid 1px $secondary-color;
+      }
+    }
+    // &:first-child {
+    //   float: left;
+    //   a {
+    //     &:after {
+    //       content: "Previous";
+    //     }
+    //   }
+    // }
+    &:nth-child(2) {
+      counter-reset: pagination;
+    }
+    // &:last-child {
+    //   float: right;
+    //   a {
+    //     &:after {
+    //       content: "Next";
+    //     }
+    //   }
+    // }
+    a {
+      border: solid 1px darken($main-color, 10%);
+      border-radius: 0.2rem;
+      color: $secondary-color;
+      text-decoration: none;
+      text-transform: uppercase;
+      display: inline-block;
+      text-align: center;
+      padding: 0.5rem 0.9rem;
+    }
+    a:after {
+      content: " " counter(pagination) " ";
+    }
+  }
