@@ -1,8 +1,10 @@
 import countryReducer from "./country";
 import { combineReducers } from "redux";
+import activityReducer from "./activities";
 
 const allReducers = combineReducers({
-    countries: countryReducer
+    countries: countryReducer,
+    activities: activityReducer
 });
 
 export default allReducers;

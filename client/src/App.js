@@ -4,7 +4,7 @@ import Landing from './components/Landing/Landing'
 import Home from './components/Home/Home'
 import Activity from './components/Activity/Activity'
 import React from 'react';
-// import Country from './components/Country/Country';
+import Country from './components/Country/Country';
 
 function App() {
   return (
@@ -25,10 +25,10 @@ function App() {
           render={() => <Activity/>}
         />
 
-        {/* <Route
+        <Route
           path='/country/:id' 
           component={Country} 
-        /> */}
+        />
         
         
       </div>

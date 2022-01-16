@@ -21,13 +21,17 @@ function Home(){
         setLoading(false);
     }, [dispatch]);
 
+    console.log(loading);
+
     //Pagination reference: https://www.youtube.com/watch?v=HANSMtDy508
     const countriesFirstPage = 9;
     const differenceOfCountries = countriesPerPage - countriesFirstPage
-    const indexOfLastCountry = currentPage===1? countriesFirstPage: countriesFirstPage*currentPage-differenceOfCountries;
+    const indexOfLastCountry = currentPage===1? countriesFirstPage: countriesPerPage*currentPage-differenceOfCountries;
     const indexOfFirstCountry = indexOfLastCountry - (currentPage===1?countriesFirstPage:countriesPerPage);
     const currentCountries = countries.slice(indexOfFirstCountry, indexOfLastCountry);
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+
 
     return (
         <div>

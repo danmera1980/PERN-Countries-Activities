@@ -3,7 +3,7 @@ import "./country.scss"
 
 function CountryCard({imageUrl, name, continent}){
     return(
-        <div className="card">
+        <div>
             <img src={imageUrl} alt="flag"/>
             <h3>{name}</h3>
             <h4>{continent}</h4>

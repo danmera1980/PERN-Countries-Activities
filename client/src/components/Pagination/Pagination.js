@@ -1,10 +1,11 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import './Pagination.scss';
 
 export const Pagination = ({ countriesPerPage, totalCountries, currentPage, firstPage, paginate }) => {
     const pageNumbers = [];
 
-    for (let i = 0; i <= Math.ceil((totalCountries-firstPage) / countriesPerPage); i++) {
+    for (let i = 0; i <= Math.ceil((totalCountries-firstPage) / countriesPerPage)+1; i++) {
         pageNumbers.push(i);      
     }
 

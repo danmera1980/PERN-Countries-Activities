@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ALL_COUNTRIES, COUNTRY_BY_ID } from './actionNames';
+import { ALL_COUNTRIES, COUNTRY_BY_ID, NEW_ACTIVITY } from './actionNames';
 
 export const getAllCountries = () => {
     return async (dispatch) => {
@@ -11,12 +11,28 @@ export const getAllCountries = () => {
         })
     }
 }
-export const countryById = (id) => {
+export const getCountryById = (id) => {
     return async (dispatch) => {
-        let results = await axios.get("http://localhost:3001/coutries/" + id);
+        let results = await axios.get("http://localhost:3001/countries/" + id);
         dispatch({
             type: COUNTRY_BY_ID,
             payload: results.data
         })
     }
+}
+
+export const postNewActivity = (data) => {
+    try {
+        return async (dispatch) => {
+            let results = await axios.post('htt[://localhost:3001/activity',data);
+            dispatch({
+                type: NEW_ACTIVITY,
+                payload: results.data
+            })
+        }
+    // eslint-disable-next-line no-unreachable
+    } catch (e) {
+        console.log(e.results.data);
+    }
+
 }

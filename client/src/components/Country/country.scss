@@ -18,3 +18,42 @@
     flex-wrap: wrap;
     margin: auto 0;
 }
+
+.card a{
+    text-decoration: none;
+    color: #fff;
+}
+
+.card a:visited{
+    color:#fff4;
+}
+
+.details {
+    background-color: #fff4;
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.flag{
+    width: 500px;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 20px;
+}
+
+.info span{
+    font-weight: 500;
+}
