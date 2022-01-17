@@ -36,16 +36,20 @@ function Home(){
     return (
         <div>
             <Nav/> 
+            <div className="searchBar">
+                <label>Search:</label>
+                <input name="search" type="text" value=""/>
+            </div>
             <div className="home">
-                <CountryCards 
-                    countries={currentCountries}
-                />
                 <Pagination
                     countriesPerPage={countriesPerPage}
                     totalCountries={countries.length}
                     paginate={paginate}
                     currentPage={currentPage}
                     firstPage={countriesFirstPage}
+                />
+                <CountryCards 
+                    countries={currentCountries}
                 />
             </div>
         </div>
