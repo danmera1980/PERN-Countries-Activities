@@ -2,16 +2,23 @@
 import React, { useEffect } from "react";
 import Nav from "../Nav/Nav";
 import { useSelector, useDispatch} from 'react-redux';
-import { getCountryById } from "../../redux/actions";
+import { getCountryById, getActivitiesByCountryID } from "../../redux/actions";
 import './country.scss';
 
 function Country(props){
     const dispatch = useDispatch();
     const country = useSelector(state => state.countries.countryDetails);
+    const activities = useSelector(state => state.activities.activities.activities);
 
     useEffect(() => {
         dispatch(getCountryById(props.match.params.id));
     }, [dispatch])
+
+    useEffect(() => {
+        dispatch(getActivitiesByCountryID(props.match.params.id));
+    }, [dispatch])
+
+    console.log(activities)
 
     return(
         <div>
@@ -32,6 +39,9 @@ function Country(props){
                 </div>
                 <div className="activities">
                     <h2>ACTIVITIES</h2>
+                    {activities && activities?.map(a => (
+                        <p key={a.id}>{a.name}</p>
+                    ))}
                 </div>
             </div>
         </div>

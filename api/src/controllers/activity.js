@@ -23,15 +23,44 @@ const createActivity = async (req, res) => {
             act.addCountry(c)
         });
 
-        res.status(200).send(activity)
+        res.status(200).send("Activity Created")
     } catch (e) {
         console.log(e)
     }
 };
 
+
+const getActivitiesByCountryID = async( req, res) => {
+    try {
+        const {countryID} = req.params
+        let country = await Country.findByPk(countryID.toUpperCase(), {
+            include: [
+                {
+                    model: Activity,
+                    attributes: [ 'id', 'name' ]
+                }
+            ]
+        });
+        if(country) {
+            res.status(200).send(country);
+        } else {
+            res.status(404).send('No se encuentra país con ese código.')
+        }
+
+    } catch (e) {
+        console.log(e)
+    }
+}
+
+
 const getAllActivities = async (req, res) => {
     try {
-        const allActivities = await Activity.findAll();
+        const allActivities = await Activity.findAll({
+            include: {
+                model: Country,
+                attributes: ['id', 'name']
+            }
+        });
 
         res.status(200).send(allActivities)
     } catch (e) {
@@ -51,5 +80,6 @@ const deleteCountry_Activity = async (req, res) => {
 module.exports = {
     createActivity,
     getAllActivities,
+    getActivitiesByCountryID,
     deleteCountry_Activity
 }

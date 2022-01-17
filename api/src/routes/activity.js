@@ -1,12 +1,11 @@
 const {Router} = require("express");
-const {getActivitiesQuery, getAllActivities, deleteCountry_Activity, createActivity } = require('../controllers/activity');
+const {getActivitiesByCountryID, getAllActivities, deleteCountry_Activity, createActivity } = require('../controllers/activity');
 
 const router = Router();
 
-// router.get('/', getActivitiesQuery);
 router.get('/', getAllActivities);
-// router.get('/:idActivity', getActivityId);
+router.get('/:countryID', getActivitiesByCountryID);
 router.post('/', createActivity);
-router.delete('/', deleteCountry_Activity);
+// router.delete('/', deleteCountry_Activity);
 
 module.exports = router;
