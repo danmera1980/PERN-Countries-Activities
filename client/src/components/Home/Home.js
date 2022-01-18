@@ -5,6 +5,9 @@ import { getAllCountries } from "../../redux/actions";
 import Nav from '../Nav/Nav';
 import './Home.scss';
 import { Pagination } from "../Pagination/Pagination";
+import { SearchBar } from '../SearchBar/SearchBar';
+import { Filter } from "../Filter/Filter";
+import { orderCountriesByName, orderCountriesByPopulation } from '../../redux/actions';
 
 function Home(){
     const dispatch = useDispatch();
@@ -12,6 +15,7 @@ function Home(){
     const [ countriesPerPage ] = useState(10);
     const [ currentPage, setCurrentPage ] = useState(1);
     const [ loading, setLoading] = useState(false);
+    const [ orderName, setOrderName ] = useState('')
 
 
 
@@ -21,6 +25,7 @@ function Home(){
         setLoading(false);
     }, [dispatch]);
 
+    // eslint-disable-next-line
     console.log(loading);
 
     //Pagination reference: https://www.youtube.com/watch?v=HANSMtDy508
@@ -33,13 +38,43 @@ function Home(){
 
 
 
+    const handleOrderCountry = (e) => {
+        e.preventDefault();
+        dispatch(orderCountriesByName(e.target.value));
+        setOrderName(e.target.value);
+        setCurrentPage(1);
+    }
+
+    const handleOrderPopulation = (e) => {
+        e.preventDefault();
+        dispatch(orderCountriesByPopulation(e.target.value))
+        setOrderName(e.target.value);
+        setCurrentPage(1);
+    }
+
     return (
         <div>
             <Nav/> 
-            <div className="searchBar">
-                <label>Search:</label>
-                <input name="search" type="text" value=""/>
+            <SearchBar />
+            <div>
+                <div className='filters'>
+                    <label>Order By Name</label>
+                    <select onChange={e => handleOrderCountry(e)}>
+                        <option value='ASC'>Select...</option>
+                        <option value='DES'>Descending</option>
+                        <option value='ASC'>Ascending</option>
+                    </select>
+                </div>
+                <div className='filters'>
+                    <label>Order By Population</label>
+                    <select onChange={e => handleOrderPopulation(e)}>
+                        <option value='ASC'>Select...</option>
+                        <option value='DES'>Descending</option>
+                        <option value='ASC'>Ascending</option>
+                    </select>
+                </div>
             </div>
+            <Filter />
             <div className="home">
                 <Pagination
                     countriesPerPage={countriesPerPage}

@@ -37,7 +37,7 @@ const getActivitiesByCountryID = async( req, res) => {
             include: [
                 {
                     model: Activity,
-                    attributes: [ 'id', 'name' ]
+                    attributes: [ 'id', 'name', 'season' ]
                 }
             ]
         });

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import Nav from "../Nav/Nav";
 import {useSelector, useDispatch} from 'react-redux';
 import { getAllCountries, postNewActivity } from "../../redux/actions";
@@ -15,7 +16,8 @@ function Activity(){
     const [ form, setForm ] = useState(formState);
     const dispatch = useDispatch();
     const countries = useSelector(state => state.countries.countries);
-    const [ errors, setErrors ] = useState({})
+    const [ errors, setErrors ] = useState({});
+    const history = useHistory();
 
     useEffect(() => {
         dispatch(getAllCountries());
@@ -41,7 +43,9 @@ function Activity(){
                 season: '',
                 countries: []
             })
+            history.push('/home');
         }
+
     };
 
     const check = (data) => {

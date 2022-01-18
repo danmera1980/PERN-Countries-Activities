@@ -8,7 +8,8 @@ import './country.scss';
 function Country(props){
     const dispatch = useDispatch();
     const country = useSelector(state => state.countries.countryDetails);
-    const activities = useSelector(state => state.activities.activities.activities);
+    const activities = useSelector(state => state.activities.activitiesCountries?.activities);
+    console.log(activities)
 
     useEffect(() => {
         dispatch(getCountryById(props.match.params.id));
@@ -40,7 +41,10 @@ function Country(props){
                 <div className="activities">
                     <h2>ACTIVITIES</h2>
                     {activities && activities?.map(a => (
-                        <p key={a.id}>{a.name}</p>
+                        <div key={a.id}>
+                            <p>{a.name}</p>
+                            <p>{a.season}</p>
+                        </div>
                     ))}
                 </div>
             </div>
