@@ -1,0 +1,197 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: monospace;
+}
+
+body {
+  background: url("space6.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-height: 100wh;
+  /* transform-style: preserve-3d; */
+}
+
+.earth {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 260px;
+  height: 260px;
+  background: url("world.jpg");
+  background-size: cover;
+  background-repeat: repeat-x;
+  border-radius: 50%;
+  -webkit-box-shadow: inset 0 0 20px black, 0 0 50px #4069ff;
+          box-shadow: inset 0 0 20px black, 0 0 50px #4069ff;
+  -webkit-animation: animateEarth 20s linear infinite;
+          animation: animateEarth 20s linear infinite;
+}
+
+@-webkit-keyframes animateEarth {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 650px 0;
+  }
+}
+
+@keyframes animateEarth {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 650px 0;
+  }
+}
+
+/* .earth h1 {
+    color: white;
+    font-size: 3em;
+    text-shadow: rgba(0,0,0,1);
+} */
+.scene {
+  position: relative;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-perspective: 500px;
+          perspective: 500px;
+}
+
+.banner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: white;
+  -webkit-perspective-origin: 50% calc(50% - 50px);
+          perspective-origin: 50% calc(50% - 50px);
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-animation: rotate 24s infinite linear;
+          animation: rotate 24s infinite linear;
+}
+
+@-webkit-keyframes rotate {
+  to {
+    -webkit-transform: rotateY(-360deg);
+            transform: rotateY(-360deg);
+  }
+}
+
+@keyframes rotate {
+  to {
+    -webkit-transform: rotateY(-360deg);
+            transform: rotateY(-360deg);
+  }
+}
+
+.panel {
+  position: absolute;
+  -webkit-transform: translate(-50%, -50%) rotateY(var(--angle)) translateZ(138px);
+          transform: translate(-50%, -50%) rotateY(var(--angle)) translateZ(138px);
+  width: 90px;
+  height: 50px;
+  overflow: hidden;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+
+.panel::before {
+  position: absolute;
+  left: var(--left);
+  content: 'World Activities - Click to Enter';
+  font-size: 40px;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+}
+
+.panel:nth-child(1) {
+  --left: 0px;
+  --angle: 0deg;
+}
+
+.panel:nth-child(2) {
+  --left: -90px;
+  --angle: 36deg;
+}
+
+.panel:nth-child(3) {
+  --left: -180px;
+  --angle: 72deg;
+}
+
+.panel:nth-child(4) {
+  --left: -270px;
+  --angle: 108deg;
+}
+
+.panel:nth-child(5) {
+  --left: -360px;
+  --angle: 144deg;
+}
+
+.panel:nth-child(6) {
+  --left: -450px;
+  --angle: 180deg;
+}
+
+.panel:nth-child(7) {
+  --left: -540px;
+  --angle: 216deg;
+}
+
+.panel:nth-child(8) {
+  --left: -630px;
+  --angle: 252deg;
+}
+
+.panel:nth-child(9) {
+  --left: -720px;
+  --angle: 288deg;
+}
+
+.panel:nth-child(10) {
+  --left: -810px;
+  --angle: 324deg;
+}
+
+.screen {
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+/*# sourceMappingURL=Landing.css.map */

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { filterByContinent, filterByActivity, filterBySeason, getAllActivities } from '../../redux/actions';
 import './Filter.scss'
