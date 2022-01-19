@@ -5,7 +5,7 @@ import './Nav.css';
 function Nav(){
     return (
         <header>
-            <div>Logo</div>
+            <div>COuntries and Activities</div>
             <div>
                 <ul>
                     <Link to='/home'>
@@ -14,7 +14,7 @@ function Nav(){
                     <Link to='/activity'>
                         <li>New Activity</li>
                     </Link>
-                    <li>About</li>
+                    {/* <li>About</li> */}
                 </ul>
             </div>
 

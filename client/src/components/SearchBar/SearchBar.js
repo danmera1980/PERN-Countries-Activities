@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getSearchCountries } from "../../redux/actions";
+import './SearchBar.scss';
+import {FaSearch} from 'react-icons/fa';
 
 export const SearchBar = () => {
     const dispatch = useDispatch();
@@ -17,9 +19,9 @@ export const SearchBar = () => {
     }
 
     return (
-        <div>
-            <input name="searchCountry" type="text" placeholder="Search..." onChange={e => handleInputChange(e)}></input>
-            <button type="submit" onClick={(e) => onSubmit(e)}>Search</button>
+        <div className="search-box">
+            <input className="search-text" name="searchCountry" type="text" placeholder="Search..." onChange={e => handleInputChange(e)}></input>
+            <button className="search-btn" type="submit" onClick={(e) => onSubmit(e)}><FaSearch /></button>
         </div>
     )
 };
