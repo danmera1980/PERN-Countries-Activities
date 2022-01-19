@@ -87,6 +87,13 @@ function Home(){
                 <CountryCards 
                     countries={currentCountries}
                 />
+                <Pagination
+                    countriesPerPage={countriesPerPage}
+                    totalCountries={countries.length}
+                    paginate={paginate}
+                    currentPage={currentPage}
+                    firstPage={countriesFirstPage}
+                />
             </div>
         </div>
     );

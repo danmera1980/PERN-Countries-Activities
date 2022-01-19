@@ -10,13 +10,14 @@ export const Pagination = ({ countriesPerPage, totalCountries, currentPage, firs
     }
 
     return (
-        <nav className='container'>
+        <nav className='container' data-pagination>
             <ul className='pagination'>
                 {
                     pageNumbers.map(number => (
+                        number!==0?
                         <li key={number} className={currentPage===number?`page-item active`:`page-item`} >
                             <a onClick={() => paginate(number)} className='page-link'> </a>
-                        </li>
+                        </li>:null
                     ))
                 }
             </ul>
