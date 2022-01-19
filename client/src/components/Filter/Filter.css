@@ -1,4 +1,8 @@
 .filters {
   color: #fff;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  padding: 10px;
 }
 /*# sourceMappingURL=Filter.css.map */

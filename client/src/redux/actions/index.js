@@ -15,7 +15,15 @@ export const getAllCountries = () => {
 export const getSearchCountries = (payload) => {
     try {
         return async (dispatch) => {
-            var results = await axios.get('http://localhost:3001/countries?name=' + payload);
+            var results = await axios.get('http://localhost:3001/countries?name=' + payload)
+                .catch(e => {
+                    if(e.response.status === 404){
+                        return dispatch({
+                            type: SEARCH_COUNTRIES,
+                            payload: []
+                        })
+                    }
+                })
             return dispatch({
                 type: SEARCH_COUNTRIES,
                 payload: results.data

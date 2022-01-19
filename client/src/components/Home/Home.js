@@ -34,7 +34,7 @@ function Home(){
     const differenceOfCountries = countriesPerPage - countriesFirstPage
     const indexOfLastCountry = currentPage===1? countriesFirstPage: countriesPerPage*currentPage-differenceOfCountries;
     const indexOfFirstCountry = indexOfLastCountry - (currentPage===1?countriesFirstPage:countriesPerPage);
-    const currentCountries = countries.slice(indexOfFirstCountry, indexOfLastCountry);
+    const currentCountries = countries?.slice(indexOfFirstCountry, indexOfLastCountry);
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
 
@@ -52,6 +52,8 @@ function Home(){
         setOrderName(e.target.value);
         setCurrentPage(1);
     }
+
+    console.log(countries)
 
     return (
         <div>
@@ -77,23 +79,35 @@ function Home(){
             </div>
             <Filter />
             <div className="home">
-                <Pagination
-                    countriesPerPage={countriesPerPage}
-                    totalCountries={countries.length}
-                    paginate={paginate}
-                    currentPage={currentPage}
-                    firstPage={countriesFirstPage}
-                />
+                {typeof(countries) !== "undefined" ? 
+                    <Pagination
+                        countriesPerPage={countriesPerPage}
+                        totalCountries={countries.length}
+                        paginate={paginate}
+                        currentPage={currentPage}
+                        firstPage={countriesFirstPage}
+                    />
+                :
+                    null
+                }
+                {typeof(countries) !== "undefined" ?
                 <CountryCards 
                     countries={currentCountries}
                 />
-                <Pagination
-                    countriesPerPage={countriesPerPage}
-                    totalCountries={countries.length}
-                    paginate={paginate}
-                    currentPage={currentPage}
-                    firstPage={countriesFirstPage}
-                />
+                : 
+                <h1 className="notFound">Countries with that name not found</h1>
+                }
+                {typeof(countries) !== "undefined" ? 
+                    <Pagination
+                        countriesPerPage={countriesPerPage}
+                        totalCountries={countries.length}
+                        paginate={paginate}
+                        currentPage={currentPage}
+                        firstPage={countriesFirstPage}
+                    />
+                :
+                    null
+                }
             </div>
         </div>
     );
