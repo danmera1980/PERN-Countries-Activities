@@ -25,27 +25,29 @@ function Country(props){
         <div>
             <Nav/>
             <div className="details">
-                <h2>{country.name}</h2>
+                <h2 className="title">{country.name}</h2>
                 <div className="content">
                     <img className="flag" src={country.imageUrl} alt="Not found"/>
-                    <div className="info">
-                        <h3> CODE: <span>{country.id}</span></h3>
-                        <h3>CONTINENT: <span>{country.continent}</span></h3>
-                        <h3>CAPITAL: <span>{country.capital}</span></h3>
-                        <h3>SUBREGION: <span>{country.subregion}</span></h3>
-                        <h3>AREA: <span>{Number(country.area).toLocaleString()} km<sup>2</sup></span></h3>
-                        <h3>POPULATION: <span>{Number(country.population).toLocaleString()} people</span></h3>
-                    </div>
-
                 </div>
-                <div className="activities">
-                    <h2>ACTIVITIES</h2>
-                    {activities && activities?.map(a => (
-                        <div key={a.id}>
-                            <p>{a.name}</p>
-                            <p>{a.season}</p>
-                        </div>
-                    ))}
+                <div className="info">
+                    <h2>DETAILS</h2>
+                    <h3>CODE: <span>{country.id}</span></h3>
+                    <h3>CONTINENT: <span>{country.continent}</span></h3>
+                    <h3>CAPITAL: <span>{country.capital}</span></h3>
+                    <h3>SUBREGION: <span>{country.subregion}</span></h3>
+                    <h3>AREA: <span>{Number(country.area).toLocaleString()} km<sup>2</sup></span></h3>
+                    <h3>POPULATION: <span>{Number(country.population).toLocaleString()} people</span></h3>
+                    <div className="activities">
+                        <h2>ACTIVITIES</h2>
+                        <ul>
+                            {activities && activities?.map(a => (
+                                <li key={a.id}>
+                                    <div>{a.name} --</div>
+                                    <div>> {a.season}</div>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
