@@ -1,0 +1,9 @@
+{
+    "name" : "pern-countries-activities",
+    "version" : "1.0.0",
+    "description": "Henry PI",
+    "main": "./client/index.js",
+    "scripts": {
+        "start": "nodemon -L"
+    }
+}
