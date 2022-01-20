@@ -4,7 +4,16 @@ import { getSearchCountries } from "../../redux/actions";
 import './SearchBar.scss';
 import {FaSearch} from 'react-icons/fa';
 
-export const SearchBar = () => {
+export const SearchBar = ({setFilterSelection}) => {
+
+    const defaultSelection = {
+        name: "",
+        population: "",
+        continent: "All",
+        season: "All",
+        activity: "All"
+    }
+
     const dispatch = useDispatch();
     const [ country, setCountry ] = useState('');
 
@@ -16,6 +25,7 @@ export const SearchBar = () => {
     const onSubmit = (e) => {
         e.preventDefault()
         dispatch(getSearchCountries(country))
+        setFilterSelection(defaultSelection);
     }
 
     return (

@@ -5,7 +5,7 @@ import './Nav.css';
 function Nav(){
     return (
         <header>
-            <div>COuntries and Activities</div>
+            <div>Countries and Activities</div>
             <div>
                 <ul>
                     <Link to='/home'>

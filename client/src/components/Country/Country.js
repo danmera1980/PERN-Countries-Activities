@@ -9,7 +9,7 @@ function Country(props){
     const dispatch = useDispatch();
     const country = useSelector(state => state.countries.countryDetails);
     const activities = useSelector(state => state.activities.activitiesCountries?.activities);
-    console.log(activities)
+    // console.log(activities)
 
     useEffect(() => {
         dispatch(getCountryById(props.match.params.id));
@@ -19,7 +19,7 @@ function Country(props){
         dispatch(getActivitiesByCountryID(props.match.params.id));
     }, [dispatch])
 
-    console.log(activities)
+    // console.log(activities)
 
     return(
         <div>

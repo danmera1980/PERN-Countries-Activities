@@ -14,20 +14,27 @@ function Home(){
     const countries = useSelector((state) => state.countries.countries);
     const [ countriesPerPage ] = useState(10);
     const [ currentPage, setCurrentPage ] = useState(1);
-    const [ loading, setLoading] = useState(false);
+    // const [ loading, setLoading] = useState(false);
     // eslint-disable-next-line
     const [ orderName, setOrderName ] = useState('')
+    const [ filterSelection, setFilterSelection ] = useState({
+        name: "",
+        population: "",
+        continent: "All",
+        season: "All",
+        activity: "All"
+    })
 
 
 
     useEffect(() => {
-        setLoading(true);
+        // setLoading(true);
         dispatch(getAllCountries());
-        setLoading(false);
+        // setLoading(false);
     }, [dispatch]);
 
     // eslint-disable-next-line
-    console.log(loading);
+    // console.log(loading);
 
     //Pagination reference: https://www.youtube.com/watch?v=HANSMtDy508
     const countriesFirstPage = 9;
@@ -42,42 +49,44 @@ function Home(){
     const handleOrderCountry = (e) => {
         e.preventDefault();
         dispatch(orderCountriesByName(e.target.value));
+        setFilterSelection(e.target.value)
         setOrderName(e.target.value);
         setCurrentPage(1);
     }
 
     const handleOrderPopulation = (e) => {
         e.preventDefault();
-        dispatch(orderCountriesByPopulation(e.target.value))
+        dispatch(orderCountriesByPopulation(e.target.value));
+        setFilterSelection(e.target.value)
         setOrderName(e.target.value);
         setCurrentPage(1);
     }
 
-    console.log(countries)
+    // console.log(countries)
 
     return (
         <div>
             <Nav/> 
-            <SearchBar />
+            <SearchBar setFilterSelection={setFilterSelection}/>
             <div>
                 <div className='filters'>
                     <label>Order By Name</label>
-                    <select onChange={e => handleOrderCountry(e)}>
-                        <option value='ASC'>Select...</option>
-                        <option value='DES'>Descending</option>
+                    <select onChange={e => handleOrderCountry(e)} value={filterSelection}>
+                        <option value=''>Select...</option>
                         <option value='ASC'>Ascending</option>
+                        <option value='DES'>Descending</option>
                     </select>
                 </div>
                 <div className='filters'>
                     <label>Order By Population</label>
-                    <select onChange={e => handleOrderPopulation(e)}>
-                        <option value='ASC'>Select...</option>
-                        <option value='DES'>Descending</option>
+                    <select onChange={e => handleOrderPopulation(e)} value={filterSelection}>
+                        <option value=''>Select...</option>
                         <option value='ASC'>Ascending</option>
+                        <option value='DES'>Descending</option>
                     </select>
                 </div>
             </div>
-            <Filter />
+            <Filter filterSelection={filterSelection} setFilterSelection={setFilterSelection}/>
             <div className="home">
                 {typeof(countries) !== "undefined" ? 
                     <Pagination
