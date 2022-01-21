@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import Nav from "../Nav/Nav";
 import { useSelector, useDispatch} from 'react-redux';
 import { getCountryById, getActivitiesByCountryID } from "../../redux/actions";
-import './country.scss';
+import './country.css';
 
 function Country(props){
     const dispatch = useDispatch();

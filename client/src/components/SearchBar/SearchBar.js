@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getSearchCountries } from "../../redux/actions";
-import './SearchBar.scss';
 import {FaSearch} from 'react-icons/fa';
+import './SearchBar.css';
 
 export const SearchBar = ({setFilterSelection}) => {
 

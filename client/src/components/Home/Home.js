@@ -3,11 +3,11 @@ import CountryCards from "../Country/CountryCards";
 import { useSelector, useDispatch } from 'react-redux';
 import { getAllCountries } from "../../redux/actions";
 import Nav from '../Nav/Nav';
-import './Home.scss';
 import { Pagination } from "../Pagination/Pagination";
 import { SearchBar } from '../SearchBar/SearchBar';
 import { Filter } from "../Filter/Filter";
 import { orderCountriesByName, orderCountriesByPopulation } from '../../redux/actions';
+import './Home.css';
 
 function Home(){
     const dispatch = useDispatch();
@@ -49,7 +49,9 @@ function Home(){
     const handleOrderCountry = (e) => {
         e.preventDefault();
         dispatch(orderCountriesByName(e.target.value));
-        setFilterSelection(e.target.value)
+        setFilterSelection({
+            country: e.target.value
+        })
         setOrderName(e.target.value);
         setCurrentPage(1);
     }
@@ -57,7 +59,9 @@ function Home(){
     const handleOrderPopulation = (e) => {
         e.preventDefault();
         dispatch(orderCountriesByPopulation(e.target.value));
-        setFilterSelection(e.target.value)
+        setFilterSelection({
+            population: e.target.value
+        })
         setOrderName(e.target.value);
         setCurrentPage(1);
     }
@@ -100,11 +104,11 @@ function Home(){
                     null
                 }
                 {typeof(countries) !== "undefined" ?
-                <CountryCards 
-                    countries={currentCountries}
-                />
+                    <CountryCards 
+                        countries={currentCountries}
+                    />
                 : 
-                <h1 className="notFound">Countries with that name not found</h1>
+                    <h1 className="notFound">Countries with that name not found</h1>
                 }
                 {typeof(countries) !== "undefined" ? 
                     <Pagination

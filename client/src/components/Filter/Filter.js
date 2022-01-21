@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { filterByContinent, filterByActivity, filterBySeason, getAllActivities } from '../../redux/actions';
-import './Filter.scss'
+import './Filter.css'
 
 export const Filter = ({filterSelection, setFilterSelection}) => {
 
@@ -16,21 +16,27 @@ export const Filter = ({filterSelection, setFilterSelection}) => {
         // console.log(e.target.value)
         e.preventDefault();
         dispatch(filterByContinent(e.target.value))
-        setFilterSelection(e.target.value)
+        setFilterSelection({
+            continent: e.target.value
+        })
     };
 
     const handleSelectSeason = (e) => {
         // console.log(e.target.value)
         e.preventDefault();
         dispatch(filterBySeason(e.target.value))
-        setFilterSelection(e.target.value)
+        setFilterSelection({
+            season: e.target.value
+        })
     };
 
     const handleSelectActivity = (e) => {
         // console.log(e.target.value)
         e.preventDefault();
         dispatch(filterByActivity(e.target.value))
-        setFilterSelection(e.target.value)
+        setFilterSelection({
+            activity: e.target.value
+        })
     };
 
     return (

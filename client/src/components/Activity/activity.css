@@ -2,10 +2,45 @@
   background-color: #fff4;
   color: #fff;
   padding: 20px;
+  width: 900px;
+  margin: auto;
+  border-radius: 10px;
+  @media(max-width: 1000px){transform: scale(.8);}
+  @media(max-width: 600px){transform: scale(.5);}
 }
 
 .error {
   color: #ff0000;
   font-weight: 700;
 }
-/*# sourceMappingURL=activity.css.map */
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.formDetails {
+  margin: 20px 0 20px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.inputCountries{
+  width: 400px;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-right: 20px;
+}
+
+.col input,select,label {
+  display: flex;
+  font-size: 14px;
+  width: 200px;
+  margin-bottom: 10px;
+}

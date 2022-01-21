@@ -17,6 +17,7 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  max-width: 1200px;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;

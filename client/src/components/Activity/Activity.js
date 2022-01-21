@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import Nav from "../Nav/Nav";
 import {useSelector, useDispatch} from 'react-redux';
 import { getAllCountries, postNewActivity } from "../../redux/actions";
-import './activity.scss';
+import './activity.css';
 
 function Activity(){
     const formState ={
@@ -169,7 +169,6 @@ function Activity(){
                                 ))}
                             </select>
                             {errors.countries ? <span className="error">{errors.countries}</span>: null}
-
                         </div>
                     </div>
                     <div>
