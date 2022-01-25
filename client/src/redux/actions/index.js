@@ -1,6 +1,6 @@
 /* eslint-disable no-unreachable */
 import axios from 'axios';
-import { ALL_COUNTRIES, ALL_ACTIVITIES, COUNTRY_BY_ID, NEW_ACTIVITY, ACTIVITIES_BY_COUNTRY_ID, SEARCH_COUNTRIES, FILTER_BY_CONTINENT, FILTER_BY_ACTIVITY, FILTER_BY_SEASON, ORDER_BY_COUNTRY, ORDER_BY_POPULATION } from './actionNames';
+import { ALL_COUNTRIES, ALL_ACTIVITIES, COUNTRY_BY_ID, NEW_ACTIVITY, ACTIVITIES_BY_COUNTRY_ID, SEARCH_COUNTRIES,  FILTER_BY_CONTINENT, FILTER_BY_ACTIVITY, FILTER_BY_SEASON, ORDER_BY_COUNTRY, ORDER_BY_POPULATION, FILTER_BY_POPULATION } from './actionNames';
 
 export const getAllCountries = () => {
     return async (dispatch) => {
@@ -65,6 +65,17 @@ export const filterBySeason = (payload) => {
         }
     } catch (error) {
         console.log(error);
+    }
+}
+
+export const filterByPopulation = (payload) => {
+    try {
+        return {
+            type: FILTER_BY_POPULATION,
+            payload
+        }
+    } catch (error) {
+        console.log(error)
     }
 }
 

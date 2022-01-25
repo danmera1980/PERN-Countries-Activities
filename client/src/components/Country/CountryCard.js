@@ -1,5 +1,5 @@
 import React from "react";
-import "./country.css"
+import "./country.scss"
 
 function CountryCard({imageUrl, name, continent}){
 

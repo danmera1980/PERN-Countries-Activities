@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { filterByContinent, filterByActivity, filterBySeason, getAllActivities } from '../../redux/actions';
+import { filterByContinent, filterByActivity, filterBySeason, getAllActivities, filterByPopulation } from '../../redux/actions';
 import './Filter.css'
 
 export const Filter = ({filterSelection, setFilterSelection}) => {
@@ -39,6 +39,14 @@ export const Filter = ({filterSelection, setFilterSelection}) => {
         })
     };
 
+    const handleSelectPopulation = (e)=> {
+        e.preventDefault();
+        dispatch(filterByPopulation(e.target.value))
+        // setFilterSelection({
+        //     population: e.target.value
+        // })
+    }
+
     return (
         <div>
             <div className='filters'>
@@ -61,6 +69,13 @@ export const Filter = ({filterSelection, setFilterSelection}) => {
                     <option value='Spring'>Spring</option>
                     <option value='Summer'>Summer</option>
                     <option value='Fall'>Fall</option>
+                </select>
+            </div>  
+            <div className='filters'>
+                <label>Population</label>
+                <select onChange={e => handleSelectPopulation(e)} value={filterSelection}>
+                    <option value='All'>All</option>
+                    <option value='50000'>50000</option>
                 </select>
             </div> 
             <div className='filters'>

@@ -1,7 +1,7 @@
 import React from "react";
 import CountryCard from "./CountryCard";
 import { Link } from "react-router-dom";
-import "./country.css";
+import "./country.scss";
 
 function CountryCards({countries}){
 

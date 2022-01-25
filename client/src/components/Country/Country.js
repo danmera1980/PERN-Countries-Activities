@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import Nav from "../Nav/Nav";
 import { useSelector, useDispatch} from 'react-redux';
 import { getCountryById, getActivitiesByCountryID } from "../../redux/actions";
-import './country.css';
+import './country.scss';
 
 function Country(props){
     const dispatch = useDispatch();
@@ -19,7 +19,7 @@ function Country(props){
         dispatch(getActivitiesByCountryID(props.match.params.id));
     }, [dispatch])
 
-    // console.log(activities)
+    console.log(activities)
 
     return(
         <div>
@@ -42,8 +42,10 @@ function Country(props){
                         <ul>
                             {activities && activities?.map(a => (
                                 <li key={a.id}>
-                                    <div>{a.name} --</div>
-                                    <div>> {a.season}</div>
+                                    <div>Name:{a.name} --</div>
+                                    <div>> Difficulty:{a.difficulty} --</div>
+                                    <div>> Duration:{a.duration} hours --</div>
+                                    <div>> Season: {a.season}</div>
                                 </li>
                             ))}
                         </ul>

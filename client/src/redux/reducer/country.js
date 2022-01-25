@@ -1,4 +1,4 @@
-import { ALL_COUNTRIES, COUNTRY_BY_ID, FILTER_BY_SEASON, FILTER_BY_ACTIVITY, FILTER_BY_CONTINENT, SEARCH_COUNTRIES, ORDER_BY_COUNTRY, ORDER_BY_POPULATION } from '../actions/actionNames';
+import { ALL_COUNTRIES, COUNTRY_BY_ID, FILTER_BY_SEASON, FILTER_BY_ACTIVITY, FILTER_BY_CONTINENT, FILTER_BY_POPULATION, SEARCH_COUNTRIES, ORDER_BY_COUNTRY, ORDER_BY_POPULATION } from '../actions/actionNames';
 
 const initialState = {
     countries: [],
@@ -54,6 +54,14 @@ const countryReducer = (state = initialState, action) => {
                 ...state,
                 countries: allCountriesSeason
             }
+
+        case FILTER_BY_POPULATION:
+            const population = action.payload === 50000 ? state.allCountries : state.allCountries.filter(c => c.population < action.payload)
+            return {
+                ...state,
+                countries: population
+            }
+
 
         case ORDER_BY_COUNTRY:
             let countriesOrder = action.payload === 'ASC' ? state.countries.sort((a, b) => {
